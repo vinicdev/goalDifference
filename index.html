@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciador de Jogadores e Gols</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="addPlayersSection">
+        <h1>Adicionar Jogadores</h1>
+        <div class="player-form">
+          <input type="text" id="playerName" placeholder="Nome do Jogador" />
+          <button onclick="addPlayer()">Adicionar Jogador</button>
+        </div>
+        <div class="player-list">
+          <h2>Jogadores Adicionados</h2>
+          <ul id="players"></ul>
+        </div>
+        <button class="action-button" onclick="showTableSection()">
+          Ir para Tabela de Jogadores
+        </button>
+      </div>
+      <div id="tableSection" style="display: none">
+        <h1>Tabela de Jogadores e Gols</h1>
+        <ul id="playersTable"></ul>
+        <button
+          class="action-button"
+          id="generatePDF"
+          onclick="openConfirmModal()"
+        >
+          Gerar PDF
+        </button>
+        <button class="action-button" onclick="showAddPlayersSection()">
+          Voltar para Adicionar Jogadores
+        </button>
+      </div>
+    </div>
+
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Editar Jogador</h2>
+        <div class="modal-input">
+          <input
+            type="text"
+            id="editPlayerName"
+            placeholder="Novo Nome do Jogador"
+          />
+          <button onclick="updatePlayer()">Atualizar Jogador</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeConfirmModal()">&times;</span>
+        <h2>Confirmação</h2>
+        <p>Você tem certeza que deseja gerar o PDF e limpar todos os dados?</p>
+        <button onclick="generatePDF()">Sim</button>
+        <button onclick="closeConfirmModal()">Não</button>
+      </div>
+    </div>
+
+    <div id="subtractModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSubtractModal()">&times;</span>
+        <h2>Confirmação</h2>
+        <p>Tem certeza que deseja diminuir 1 gol deste jogador?</p>
+        <button onclick="confirmSubtractGoal()">Sim</button>
+        <button onclick="closeSubtractModal()">Não</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>
