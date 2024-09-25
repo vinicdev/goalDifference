@@ -16,7 +16,10 @@
         </div>
         <div class="player-list">
           <h2>Jogadores Adicionados</h2>
-          <ul id="players"></ul>
+          <div class="list-container">
+            <!-- Novo contêiner para scroll -->
+            <ul id="players"></ul>
+          </div>
         </div>
         <button class="action-button" onclick="showTableSection()">
           Ir para Tabela de Jogadores
@@ -24,7 +27,9 @@
       </div>
       <div id="tableSection" style="display: none">
         <h1>Tabela de Jogadores e Gols</h1>
-        <ul id="playersTable"></ul>
+        <div class="table-container">
+          <ul id="playersTable"></ul>
+        </div>
         <button
           class="action-button"
           id="generatePDF"

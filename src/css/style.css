@@ -48,8 +48,18 @@ button:hover {
   margin-top: 15px;
   width: 100%;
 }
-.player-list ul,
-#playersTable {
+.player-list {
+  margin-top: 10px; /* Espaçamento acima da lista */
+}
+.list-container {
+  max-height: 200px; /* Ajuste conforme necessário */
+  overflow-y: auto; /* Habilita scroll vertical */
+  border: 1px solid #ddd; /* Adiciona borda para visualização */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 10px; /* Preenchimento interno */
+  background-color: #fff; /* Cor de fundo */
+}
+ul {
   list-style-type: none;
   padding: 0;
 }
@@ -70,7 +80,6 @@ li button {
 .actions {
   position: relative;
 }
-
 .dots-button {
   background-color: transparent;
   border: none;
@@ -78,11 +87,9 @@ li button {
   cursor: pointer;
   font-size: 16px;
 }
-
 .dots-button:hover {
   background-color: #7ab8fa;
 }
-
 .tooltip {
   display: none;
   position: absolute;
@@ -95,17 +102,14 @@ li button {
   z-index: 100;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .tooltip button {
   display: block;
   margin: 5px 0;
   font-size: 12px;
 }
-
 .show {
   display: block;
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -141,11 +145,17 @@ li button {
 .modal-input {
   display: flex;
 }
+.table-container {
+  max-height: 300px; /* Ajuste conforme necessário */
+  overflow-y: auto; /* Habilita scroll vertical */
+  margin-bottom: 20px; /* Espaçamento abaixo da tabela */
+  border: 1px solid #ddd; /* Adiciona borda para visualização */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 10px; /* Preenchimento interno */
+  background-color: #fff; /* Cor de fundo */
+}
 @media (max-width: 400px) {
   .container {
     width: 90%;
-  }
-  input {
-    width: 60%;
   }
 }
