@@ -195,15 +195,46 @@ function generatePDF() {
     "/" +
     today.getFullYear();
 
-  let content = `Lista de Jogadores e Gols do dia ${formattedDate}:\n\n`;
-
-  players.forEach((player) => {
-    content += `${player.name} - Gols: ${player.goals}\n`;
-  });
-
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.text(content, 10, 10);
+
+  doc.setFontSize(18);
+  doc.text("Relatório de Gols", doc.internal.pageSize.getWidth() / 2, 20, {
+    align: "center",
+  });
+  doc.setFontSize(12);
+  doc.text(`Data: ${formattedDate}`, doc.internal.pageSize.getWidth() / 2, 28, {
+    align: "center",
+  });
+
+  doc.setFontSize(14);
+  doc.text("Lista de Jogadores e Gols:", 10, 40);
+
+  doc.setFontSize(12);
+  let startY = 50;
+
+  players.forEach((player, index) => {
+    if (startY > 280) {
+      doc.addPage();
+      startY = 20;
+    }
+    doc.setFont(undefined, "bold");
+    doc.text(`${index + 1}. ${player.name}`, 10, startY);
+    doc.setFont(undefined, "normal");
+    doc.text(`Gols: ${player.goals}`, 150, startY);
+    startY += 10;
+  });
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    doc.setFontSize(10);
+    doc.text(
+      `Página ${i} de ${totalPages}`,
+      doc.internal.pageSize.getWidth() - 20,
+      doc.internal.pageSize.getHeight() - 10
+    );
+  }
 
   const fileName = `saldoGols-${formattedDate.replace(/\//g, "-")}.pdf`;
   doc.save(fileName);
